@@ -1,0 +1,15 @@
+---
+import Link from "../components/common/Link.astro";
+
+const { frontmatter } = Astro.props;
+console.log("frontmatter ", frontmatter);
+---
+
+<header class="text-blue-200">
+  <!-- back to home -->
+  <Link textContent="back to home" url="/" style={"none"} />
+</header>
+
+<div class="prose dark:prose-invert prose-slate w-full mx-auto py-10">
+  <slot />
+</div>

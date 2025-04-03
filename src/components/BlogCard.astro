@@ -1,0 +1,21 @@
+---
+import { type CollectionEntry } from "astro:content";
+
+interface Props {
+  post: CollectionEntry<"webdev" | "cooking" | "travel">;
+  pageFor: string;
+}
+
+const { post, pageFor } = Astro.props;
+---
+
+<article class="px-2 py-1.5">
+  <a href={`/${pageFor}/${post.slug}`}>
+    <h2
+      class="dark:text-gray-200 text-gray-900 text-3xl first-letter:uppercase"
+    >
+      {post.data.title}
+    </h2>
+  </a>
+  <p class="text-gray-400 line-clamp-2">{post.body}</p>
+</article>

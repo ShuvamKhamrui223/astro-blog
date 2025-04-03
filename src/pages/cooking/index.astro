@@ -1,0 +1,13 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import PostList from "../../components/PostList.astro";
+import { getCollection } from "astro:content";
+import Heading1 from "../../components/common/heading1.astro";
+
+const cookingBlogs = await getCollection("cooking");
+---
+
+<Layout>
+  <Heading1 textContent={"cooking blogs"} />
+  <PostList posts={cookingBlogs} linkTo="cooking" />
+</Layout>

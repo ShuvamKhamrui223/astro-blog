@@ -1,0 +1,16 @@
+---
+interface Props {
+  textContent: string;
+  url: string;
+  style: "filled" | "outlined" | "link-highlight" | "none";
+  className?: string;
+}
+
+const { textContent, url, style } = Astro.props;
+---
+
+<a
+  href={url}
+  class=`text-lg  dark:text-gray-200 capitalize ${style === "filled" && "bg-blue-600 text-gray-200 px-4 py-2"} ${style==="link-highlight"&& "underline underline-offset-4"} ${style==="none"&& "text-gray-800 dark:text-gray-200"}`
+  >{textContent}</a
+>

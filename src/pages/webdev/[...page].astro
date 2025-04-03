@@ -1,0 +1,20 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Heading1 from "../../components/common/heading1.astro";
+import PostList from "../../components/PostList.astro";
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getCollection("webdev");
+
+  return paginate(posts, { pageSize: 4 });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+---
+
+<Layout>
+  <Heading1 textContent="web dev blogs" />
+  <PostList posts={page.data} linkTo="webdev" />
+</Layout>
