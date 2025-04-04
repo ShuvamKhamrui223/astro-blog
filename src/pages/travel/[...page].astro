@@ -5,19 +5,18 @@ import Layout from "../../layouts/Layout.astro";
 import Heading1 from "../../components/common/heading1.astro";
 import PostList from "../../components/PostList.astro";
 import Link from "../../components/common/Link.astro";
-
 export const getStaticPaths = (async ({ paginate }) => {
-  const posts = await getCollection("webdev");
+  const travelposts = await getCollection("travel");
 
-  return paginate(posts, { pageSize: 4 });
+  return paginate(travelposts, { pageSize: 3 });
 }) satisfies GetStaticPaths;
 
 const { page } = Astro.props;
 ---
 
 <Layout>
-  <Heading1 textContent="web dev blogs" />
-  <PostList posts={page.data} linkTo="webdev" />
+  <Heading1 textContent={"travel blogs"} />
+  <PostList posts={page.data} linkTo="travel" />
   <div class="flex items-center gap-2">
     {
       page.url.prev != undefined && (

@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
 import Head from "../components/common/head.astro";
 import Navbar from "../components/common/navbar.astro";
 ---
@@ -9,7 +9,9 @@ import Navbar from "../components/common/navbar.astro";
   <Head />
   <body>
     <Navbar />
-    <main class="min-h-screen dark:bg-stone-900 bg-stone-100 px-8 md:px-[9%] py-4">
+    <main
+      class="min-h-screen dark:bg-stone-900 bg-stone-200/50 px-8 md:px-[9%] py-4"
+    >
       <slot />
     </main>
   </body>

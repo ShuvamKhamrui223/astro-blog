@@ -1,0 +1,11 @@
+---
+import type { GetStaticPaths } from "astro";
+export const getStaticPaths = (() => {
+    
+    return [];
+}) satisfies GetStaticPaths;
+const { tag } = Astro.params;
+
+---
+
+{tag}

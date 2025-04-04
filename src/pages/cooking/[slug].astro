@@ -2,13 +2,14 @@
 import { getCollection, type CollectionEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import BlogLayout from "../../layouts/BlogLayout.astro";
+import { slugify } from "../../js/utils";
 
 export const getStaticPaths = async () => {
   const posts = await getCollection("cooking");
   const paths = posts.map((post) => {
     return {
       params: {
-        slug: post.slug,
+        slug: slugify(post.data.title),
       },
       props: { post },
     };

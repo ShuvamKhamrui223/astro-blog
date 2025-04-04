@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry } from "astro:content";
+import { slugify, formatDate } from "../js/utils";
 
 interface Props {
   post: CollectionEntry<"webdev" | "cooking" | "travel">;
@@ -9,13 +10,76 @@ interface Props {
 const { post, pageFor } = Astro.props;
 ---
 
-<article class="px-2 py-1.5">
-  <a href={`/${pageFor}/${post.slug}`}>
-    <h2
-      class="dark:text-gray-200 text-gray-900 text-3xl first-letter:uppercase"
-    >
+<article
+  class="p-8 flex flex-col items-start gap-4 ring-2 ring-blue-800 dark:ring-blue-600 rounded-xl"
+>
+  <div class="w-full flex justify-between items-center">
+    {
+      post.data.categories.map((category) => (
+        <span class="inline-block py-1 px-2 rounded dark:bg-indigo-50 text-indigo-500 text-sm font-medium tracking-widest">
+          {category}
+        </span>
+      ))
+    }
+
+    <p class="text-gray-500 dark:text-gray-300">
+      {formatDate(post.data.date.toString())}
+    </p>
+  </div>
+  <h2
+    class="sm:text-3xl text-2xl title-font font-medium text-gray-900 dark:text-gray-100"
+  >
+    <a href={`/${pageFor}/${slugify(post.data.title)}`}>
       {post.data.title}
-    </h2>
-  </a>
-  <p class="text-gray-400 line-clamp-2">{post.body}</p>
+    </a>
+  </h2>
+  <p class="leading-relaxed text-gray-400">
+    {
+      post.data.description.length > 150
+        ? post.data.description.slice(0, 150)
+        : post.data.description
+    }
+  </p>
+
+  <!-- tags -->
+  <div class="flex flex-wrap gap-x-3 gap-y-2">
+    {
+      post.data.tags.map((tagname) => (
+        <span class="text-green-800 bg-green-100 px-2 py-0.5 rounded-full hover:text-green-500 text-sm capitalize">
+          <a href={`/tag/${slugify(tagname)}`}>{tagname}</a>
+        </span>
+      ))
+    }
+  </div>
+  <div
+    class="flex items-center flex-wrap pb-4 mb-4 border-b-2 border-gray-100 mt-auto w-full"
+  >
+    <a
+      href={`/${pageFor}/${slugify(post.data.title)}`}
+      class="text-blue-600 dark:text-blue-400 capitalize inline-flex items-center"
+      >read article
+      <svg
+        class="w-4 h-4 ml-2"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+        fill="none"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M5 12h14"></path>
+        <path d="M12 5l7 7-7 7"></path>
+      </svg>
+    </a>
+  </div>
+  <span
+    class="title-font font-medium text-gray-700 dark:text-gray-300/55 first-letter:uppercase"
+  >
+    posted by <a
+      href={`/author/`}
+      class="inline-flex items-center text-orange-400"
+    >
+      {post.data.author}
+    </a>
+  </span>
 </article>

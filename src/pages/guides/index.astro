@@ -9,10 +9,10 @@ const collectionNames = Object.keys(collections);
 
 <Layout>
   <Heading1 textContent={"guides"} />
-  <div class="flex items-center gap-4 my-8">
+  <div class="flex items-center flex-wrap gap-4 my-8">
     {
       collectionNames?.map((cname) => (
-        <div class="border-2 rounded-xl border-blue-950 min-h-32 min-w-40 content-center text-center bg-gradient-to-t dark:from-blue-900">
+        <div class="border-1 rounded-xl border-blue-950 dark:hover:bg-gray-800/70 transition-colors duration-100 size-20 content-center text-center">
           <Link textContent={cname} url={`/${cname}`} style={"none"} />
         </div>
       ))
