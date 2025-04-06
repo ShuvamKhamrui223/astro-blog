@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import Heading1 from "../../components/common/heading1.astro";
 import { collections } from "../../content.config";
 import Link from "../../components/common/Link.astro";
-
+import { Image } from "astro:assets";
 const collectionNames = Object.keys(collections);
 ---
 
@@ -12,8 +12,24 @@ const collectionNames = Object.keys(collections);
   <div class="flex items-center flex-wrap gap-4 my-8">
     {
       collectionNames?.map((cname) => (
-        <div class="border-1 rounded-xl border-blue-950 dark:hover:bg-gray-800/70 transition-colors duration-100 size-20 content-center text-center">
-          <Link textContent={cname} url={`/${cname}`} style={"none"} />
+        <div class="rounded-xl content-center text-center relative h-48 w-80 ">
+          {/* <Image
+            src={`${cname}`}
+            alt={"food collection"}
+            class={
+              "absolute inset-0 h-full w-full object-cover aspect-video gruop-hover:scale-105 transition-transform duration-150"
+            }
+            height={500}
+            width={400}
+          /> */}
+          <div class="absolute group inset-0 z-10 bg-gray-800/50 size-full grid place-items-center">
+            <Link
+              textContent={cname}
+              url={`/${cname}`}
+              style={"none"}
+              className=""
+            />
+          </div>
         </div>
       ))
     }

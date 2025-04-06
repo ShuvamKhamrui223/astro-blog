@@ -59,7 +59,7 @@ const currentpath = Astro.url.pathname;
   class="bg-gray-800/30 w-full h-full absolute top-0 -left-full duration-100"
 >
   <aside
-    class="w-3/5 h-full dark:bg-gray-800 bg-gray-100 pl-10 absolute top-0 left-0"
+    class="w-[70%] h-full dark:bg-gray-800 bg-gray-100 pl-10 pt-10 absolute top-0 left-0"
   >
     <ul class="md:flex gap-2 flex-col">
       {
@@ -75,7 +75,7 @@ const currentpath = Astro.url.pathname;
               <Link
                 textContent={menu.navLabel}
                 url={menu.navPath}
-                style="outlined"
+                style="none"
               />
             )}
           </li>

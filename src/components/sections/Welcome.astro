@@ -1,14 +1,14 @@
 ---
 import { Image } from "astro:assets";
-import Link from "./common/Link.astro";
-import Heading1 from "./common/heading1.astro";
+import headshot from "../../assets/head-6.jpg";
+import Link from "../common/Link.astro";
 ---
 
-<section class="container mx-auto flex py-24 md:flex-row flex-col items-center">
+<section class="container mx-auto flex pb-10 md:flex-row flex-col items-center py-24 sm:py-0">
   <div
     class="lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center"
   >
-    <h1 class="lg:text-6xl sm:text-4xl mb-4 font-bold dark:text-white">
+    <h1 class="lg:text-6xl text-7xl mb-4 font-bold dark:text-white">
       <span class="text-blue-600"> Code.</span>
       <span class="text-orange-400">Cook.</span>
       <span class="text-green-400"><br /> Roam.</span>
@@ -18,18 +18,21 @@ import Heading1 from "./common/heading1.astro";
       And I believe the best stories are found on the road. Join me as I share
       my creations and adventures.
     </p>
-    <Link textContent="read blog" url="/guides" style={"filled"} />
+    <div class="flex flex-col sm:flex-row gap-4">
+      <Link textContent="read blog" url="/guides" style={"filled"} />
+      <Link textContent="about me" url="/about" style={"outlined"} />
+    </div>
   </div>
   <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6">
     <Image
-      class="w-full rounded object-cover object-center"
+      class="w-full rounded object-center sepia-100 mask-b-from-1 contrast-75"
       alt="hero"
-      width={400}
-      height={200}
+      width={300}
+      height={350}
       fit="cover"
       format="webp"
       loading={"lazy"}
-      src="https://images.unsplash.com/photo-1656337789708-cdf37b07112d?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      src={headshot}
     />
   </div>
 </section>

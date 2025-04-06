@@ -1,2 +1,7 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+
+.sticky-heading {
+  writing-mode: sideways-lr;
+  @apply text-nowrap uppercase text-6xl font-extrabold text-gray-900 dark:text-white  text-left h-fit sticky inset-0;
+}
